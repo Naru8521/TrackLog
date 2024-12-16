@@ -120,7 +120,7 @@ function getCommandDetails(commandsPath, commandSetting, commands, ev) {
                 for (let i = 0; i < commandPaths.length; i++) {
                     const commandParts = commandStrings[i].split(" ");
 
-                    if (commands[i].tags.length > 0 && !sender.getTags().some(commands[i].tags)) {
+                    if (commands[i].tags.length > 0 && !sender.getTags().some(tag => commands[i].tags.includes(tag))) {
                         return undefined;
                     }
 
