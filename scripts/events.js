@@ -120,8 +120,10 @@ world.afterEvents.buttonPush.subscribe(ev => {
         if (source instanceof Player && playerFilters.includes(source.name)) return;
         if (blockFilters.includes(block.typeId)) return;
 
-        const log = `${getTimeString("§e", "§f")} §b${source instanceof Player ? source.name : source.typeId.split(":")[1]}§f pushed §d${block.typeId.split(":")[1]}§f`;
-        Log.add(`${logTypes.block}_${block.location.x}_${block.location.y}_${block.location.z}_${block.dimension.id}`, setting.maxLog, log);
+        try {
+            const log = `${getTimeString("§e", "§f")} §b${source instanceof Player ? source.name : source.typeId.split(":")[1]}§f pushed §d${block.typeId.split(":")[1]}§f`;
+            Log.add(`${logTypes.block}_${block.location.x}_${block.location.y}_${block.location.z}_${block.dimension.id}`, setting.maxLog, log);
+        } catch {}
     }
 });
 
@@ -130,18 +132,20 @@ world.afterEvents.tripWireTrip.subscribe(ev => {
     const logSetting = Log.getSetting();
     const setting = logSetting.block;
 
-    for (const source of sources) {
-        if (logSetting.state && setting.state) {
-            const playerFilters = setting.playerFilters;
-            const blockFilters = setting.blockFilters;
-
-            if (source instanceof Player && playerFilters.includes(source.name)) return;
-            if (blockFilters.includes(block.typeId)) return;
-
-            const log = `${getTimeString("§e", "§f")} §b${source instanceof Player ? source.name : source.typeId.split(":")[1]}§f pressed §d${block.typeId}§f`;
-            Log.add(`${logTypes.block}_${block.location.x}_${block.location.y}_${block.location.z}_${block.dimension.id}`, setting.maxLog, log);
+    try {
+        for (const source of sources) {
+            if (logSetting.state && setting.state) {
+                const playerFilters = setting.playerFilters;
+                const blockFilters = setting.blockFilters;
+    
+                if (source instanceof Player && playerFilters.includes(source.name)) return;
+                if (blockFilters.includes(block.typeId)) return;
+    
+                const log = `${getTimeString("§e", "§f")} §b${source instanceof Player ? source.name : source.typeId.split(":")[1]}§f pressed §d${block.typeId}§f`;
+                Log.add(`${logTypes.block}_${block.location.x}_${block.location.y}_${block.location.z}_${block.dimension.id}`, setting.maxLog, log);
+            }
         }
-    }
+    } catch {}
 });
 
 world.afterEvents.pressurePlatePush.subscribe(ev => {
