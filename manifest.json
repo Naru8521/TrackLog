@@ -2,9 +2,9 @@
     "format_version": 2,
     "header": {
         "description": "ワールド内でのブロック破壊や設置、使用などの様々なログを確認できるようになります\n製作:なるる\nYouTube:なるる-Naruru",
-        "name": "TrackLog ver1.0.2",
+        "name": "TrackLog ver1.0.3",
         "uuid": "281d99bf-fbcf-4fb9-acee-b2e1822eb504",
-        "version": [1, 0, 2],
+        "version": [1, 0, 3],
         "min_engine_version": [1, 21, 51]
     },
     "modules": [
@@ -13,7 +13,7 @@
             "type": "script",
             "language": "javascript",
             "uuid": "af44ea20-7715-4543-88d8-0addf13a4bbd",
-            "version": [1, 0, 2],
+            "version": [1, 0, 3],
             "entry": "scripts/index.js"
         }
     ],
