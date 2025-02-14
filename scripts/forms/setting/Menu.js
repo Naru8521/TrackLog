@@ -25,4 +25,5 @@ export default async function SettingMenuForm(player) {
     if (selection === 0) return await SettingChangeStateForm(player, undefined, SettingMenuForm);
     if (selection === 1) return await SettingJoinLeaveMenuForm(player);
     if (selection === 2) return await SettingChatMenuForm(player);
+    if (selection === 3) return await SettingBlockMenuForm(player);
 }
